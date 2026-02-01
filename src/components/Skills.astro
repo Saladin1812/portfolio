@@ -1,0 +1,81 @@
+---
+const skillCategories = [
+  {
+    title: "Languages",
+    skills: [
+      "Rust",
+      "C++",
+      "Kotlin",
+      "Go",
+      "Python",
+      "Lua",
+      "Odin",
+      "Zig",
+      "Bash",
+      "C#",
+    ],
+  },
+  {
+    title: "Frameworks & Tech",
+    skills: [
+      "Compose Multiplatform",
+      "GTK 4",
+      "Libadwaita",
+      "Iced",
+      "Unreal Engine",
+      "Unity",
+      "Avalonia",
+      "Flutter",
+      "Expo",
+    ],
+  },
+  {
+    title: "Databases",
+    skills: ["MySQL", "PostgreSQL", "SQLite", "MongoDB", "Pocketbase"],
+  },
+  {
+    title: "Cloud & DevOps",
+    skills: [
+      "GitLab CI/CD",
+      "GitHub Actions",
+      "Woodpecker CI",
+      "Docker",
+      "Nix",
+    ],
+  },
+  {
+    title: "Tools & Environment",
+    skills: ["Git", "Neovim", "IntelliJ", "Rider", "NixOS", "Hyprland"],
+  },
+];
+---
+
+<section id="skills" class="section-fade px-6 py-24">
+  <div class="mx-auto max-w-6xl">
+    <div class="reveal reveal-up">
+      <p class="font-mono text-sm text-accent">// skills</p>
+      <h2 class="mt-2 font-mono text-3xl font-bold text-text">
+        Tech Stack
+      </h2>
+    </div>
+
+    <div class="mt-10 space-y-8">
+      {
+        skillCategories.map((category, i) => (
+          <div class={`reveal reveal-right stagger-${Math.min(i + 1, 5)}`}>
+            <h3 class="mb-3 font-mono text-sm text-text-muted">
+              {category.title}
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              {category.skills.map((skill) => (
+                <span class="rounded-md border border-border bg-card px-3 py-1.5 font-mono text-xs text-text-secondary transition-all hover:border-accent/40 hover:text-accent">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

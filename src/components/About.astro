@@ -1,0 +1,92 @@
+---
+const features = [
+  {
+    title: "Programming Languages",
+    description:
+      "Expertise in Rust, C++, Kotlin, Go, Zig, Odin and adaptable to new workflows.",
+    icon: `<path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/>`,
+  },
+  {
+    title: "Server Solutions",
+    description:
+      "Proficient with shell scripts, automation and CLI. Providing server setup services.",
+    icon: `<rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/>`,
+  },
+  {
+    title: "Team Work",
+    description:
+      "Prominent member of development teams, QA teams and various open source collaborations.",
+    icon: `<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>`,
+  },
+  {
+    title: "Remote Collaborations",
+    description:
+      "Coordinated with remote teams & individuals across the US, EU and Asia.",
+    icon: `<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>`,
+  },
+];
+---
+
+<section id="about" class="section-fade px-6 py-24">
+  <div class="mx-auto max-w-6xl">
+    <div class="reveal reveal-up">
+      <p class="font-mono text-sm text-accent">// about</p>
+      <h2 class="mt-2 font-mono text-3xl font-bold text-text">About Me</h2>
+    </div>
+
+    <div class="mt-10 grid gap-12 lg:grid-cols-2">
+      <!-- Bio -->
+      <div class="reveal reveal-left stagger-1 space-y-4">
+        <p class="leading-relaxed text-text-secondary">
+          Software Engineer, developer tinkering with new tech & languages. Free
+          and Open Source Software enthusiast, creating Apps, Games, CLI stuff,
+          CI/CD, automation & a lot more. Specializing in
+          <span class="text-text">Kotlin</span>,
+          <span class="text-text">Rust</span>,
+          <span class="text-text">C++</span>,
+          <span class="text-text">Go</span>,
+          <span class="text-text">Zig</span>,
+          <span class="text-text">Odin</span> &
+          <span class="text-text">Python</span>.
+        </p>
+        <p class="leading-relaxed text-text-secondary">
+          Working as a freelancer doing server setups including games and web
+          servers, creating chat bots (Discord, Telegram). A revert to Islam
+          trying to seek the pleasure of Allah. I love reading psychology,
+          history of nations and mankind & of course docs.
+        </p>
+      </div>
+
+      <!-- Feature cards -->
+      <div class="grid gap-4 sm:grid-cols-2">
+        {
+          features.map((feature, i) => (
+            <div
+              class={`reveal reveal-scale stagger-${i + 1} group rounded-xl border border-border bg-card p-5 transition-all hover:border-accent/30 hover:bg-card-hover`}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-accent"
+                set:html={feature.icon}
+              />
+              <h3 class="mt-3 font-mono text-sm font-medium text-text">
+                {feature.title}
+              </h3>
+              <p class="mt-1.5 text-sm leading-relaxed text-text-muted">
+                {feature.description}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

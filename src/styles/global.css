@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0a0a0f;
+  --color-surface: #111119;
+  --color-card: #16161e;
+  --color-card-hover: #1a1a24;
+  --color-border: #1e1e2e;
+  --color-border-light: #2a2a3e;
+  --color-text: #e4e4e7;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #71717a;
+  --color-accent: #22d3ee;
+  --color-accent-dim: #155e75;
+  --color-accent-hover: #06b6d4;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: var(--color-border-light) var(--color-bg);
+  scrollbar-width: thin;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-accent-dim);
+  color: var(--color-text);
+}
+
+/* Scroll reveal animations */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+  filter: blur(0);
+}
+
+/* Variants */
+.reveal-up {
+  transform: translateY(40px);
+}
+
+.reveal-down {
+  transform: translateY(-40px);
+}
+
+.reveal-left {
+  transform: translateX(-40px);
+}
+
+.reveal-right {
+  transform: translateX(40px);
+}
+
+.reveal-scale {
+  transform: scale(0.92);
+  filter: blur(4px);
+}
+
+.reveal-fade {
+  /* just opacity, no transform */
+}
+
+/* Stagger delays for children */
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+.stagger-6 { transition-delay: 0.6s; }
+
+/* Scroll progress bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--color-accent);
+  z-index: 100;
+  transition: width 50ms linear;
+}
+
+/* Also keep the old class as alias */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Terminal cursor blink */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Subtle glow */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(34, 211, 238, 0.15); }
+  50% { box-shadow: 0 0 40px rgba(34, 211, 238, 0.25); }
+}
+
+.glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Grid background pattern */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Gradient fade for sections */
+.section-fade {
+  position: relative;
+}
+
+.section-fade::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+}
+
+/* Smooth link underline */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Custom cursor */
+.custom-cursor,
+.custom-cursor a,
+.custom-cursor button,
+.custom-cursor input,
+.custom-cursor textarea {
+  cursor: none;
+}
+
+#cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, opacity 0.15s ease;
+  will-change: transform;
+}
+
+#cursor-dot.cursor-hover {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-bg);
+}
+
+#cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--color-accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0;
+  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, background-color 0.3s ease, opacity 0.15s ease;
+  will-change: transform;
+}
+
+#cursor-ring.cursor-hover {
+  width: 56px;
+  height: 56px;
+  border-color: var(--color-accent);
+  background-color: rgba(34, 211, 238, 0.1);
+}
